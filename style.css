@@ -851,10 +851,18 @@ body.fade-out {
     opacity: 0;
 }
 
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
 .qr-code img{
     width:60px;
     height:60px;
     background:white;
     padding:3px;
+    border-radius:5px;
+}
     border-radius:5px;
 }
