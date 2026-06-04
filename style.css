@@ -1,0 +1,842 @@
+/* ===================== RESET ===================== */
+/* Menghapus margin & padding bawaan browser, serta mengatur model box & font global */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box; /* Ukuran elemen dihitung termasuk padding dan border */
+    font-family:'Segoe UI',sans-serif;
+}
+
+/* Mengatur efek scroll agar halus saat berpindah antar section (anchor link) */
+html{
+    scroll-behavior:smooth;
+}
+
+/* Mengatur warna latar belakang halaman dan warna teks default */
+body{
+    background:#f4f7fb;
+    color:#1a1a1a;
+}
+
+/* ===================== HEADER ===================== */
+/* Mengatur navigasi atas agar melayang (sticky) dengan efek blur kaca */
+header{
+    position:sticky;
+    top:0;
+    background:rgba(11,31,58,0.75); /* navy tapi transparan */
+    backdrop-filter: blur(10px);    /* efek kaca (glass) untuk browser modern */
+    -webkit-backdrop-filter: blur(10px); /* efek kaca untuk browser berbasis webkit (Safari) */
+    padding:15px 0;
+    z-index:1000; /* Memastikan header berada di lapisan paling atas */
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    transition:0.3s;
+}
+
+/* Container untuk membungkus konten agar rapi di tengah halaman */
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* Mengatur tata letak menu navbar menjadi sejajar horizontal */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* Gaya teks logo di header */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#ffffff;
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* Mengatur ukuran dan proporsi gambar logo */
+.logo-img{
+    width:40px;
+    height:40px;
+    object-fit:contain; /* Gambar pas di dalam kotak tanpa terpotong */
+}
+
+/* ===================== MENU ===================== */
+/* Mengatur list menu navigasi menjadi sejajar horizontal */
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+/* Memberi jarak antar item menu */
+nav ul li{
+    margin-left:20px;
+}
+
+/* Gaya teks link menu navigasi */
+nav ul li a{
+    text-decoration:none;
+    color:#e6f0ff;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+/* Efek perubahan warna saat link menu disorot (hover) */
+nav ul li a:hover{
+    color:#4da3ff;
+}
+
+/* ===================== HERO ===================== */
+/* Bagian spanduk utama halaman dengan latar belakang gambar dan teks di tengah */
+.hero{
+    height:90vh; /* Tinggi hero sebesar 90% dari tinggi layar */
+
+    /* Kombinasi warna gradasi transparan dan gambar latar belakang */
+    background:
+    linear-gradient(
+        rgba(11,31,58,0.75),
+        rgba(30,58,95,0.75)
+    ),
+    url('img/kantor-manjung.jpg');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+/* Ukuran font untuk judul utama di bagian Hero */
+.hero h1{
+    font-size:55px;
+}
+
+/* Ukuran font dan jarak untuk sub-judul di bagian Hero */
+.hero p{
+    font-size:22px;
+    margin-top:15px;
+}
+
+/* BUTTON */
+/* Gaya tombol universal dengan sudut membulat */
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    background:#1e3a5f;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+/* Perubahan warna tombol saat disorot */
+.btn:hover{
+    background:#4da3ff;
+}
+
+/* ===================== SECTION ===================== */
+/* Ruang pengisi (padding) standar untuk setiap section/bagian halaman */
+.section{
+    padding:40px 0;
+}
+
+/* Gaya judul setiap section agar berada di tengah */
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+    color:#1e3a5f;
+}
+
+/* ===================== CARD ===================== */
+/* Grid layout untuk membungkus kartu-kartu informasi agar responsif otomatis */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+/* Gaya kotak kartu individual beserta efek bayangannya */
+.card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,.12);
+    transition:0.3s;
+}
+
+/* Efek kartu sedikit terangkat ke atas saat disorot */
+.card:hover{
+    transform:translateY(-8px);
+}
+
+/* Mengatur gambar di dalam kartu agar proporsional */
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover; /* Gambar memenuhi area kotak tanpa merusak aspek rasio */
+}
+
+/* Padding bagian dalam teks kartu */
+.card-content{
+    padding:20px;
+}
+
+/* ===================== STATISTIK ===================== */
+/* Grid layout untuk menampilkan data statistik */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+/* Kotak statistik individual dengan border tebal di bagian atas */
+.stat-box{
+    background:white;
+    padding:35px;
+    text-align:center;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.10);
+    border-top:5px solid #1e3a5f;
+    transition:0.3s;
+}
+
+/* Efek kotak statistik sedikit terangkat ke atas saat disorot */
+.stat-box:hover{
+    transform:translateY(-10px);
+}
+
+/* Mengatur ukuran dan warna ikon di dalam kotak statistik */
+.stat-box i{
+    font-size:45px;
+    color:#1e3a5f;
+    margin-bottom:15px;
+}
+
+/* Ukuran angka/judul besar pada statistik */
+.stat-box h2{
+    font-size:42px;
+    color:#1e3a5f;
+}
+
+/* Ukuran teks keterangan statistik */
+.stat-box p{
+    font-size:18px;
+    margin-top:10px;
+}
+
+/* ===================== PAGE HEADER ===================== */
+/* Spanduk header khusus untuk sub-halaman (bukan halaman utama) */
+.page-header{
+    background:
+    linear-gradient(
+        rgba(11,31,58,0.75),
+        rgba(30,58,95,0.75)
+    ),
+    url('img/kantor-manjung.jpg');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    color:white;
+    text-align:center;
+    padding:100px 20px;
+}
+
+/* ===================== CONTENT ===================== */
+/* Pembungkus area konten utama halaman */
+.content{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:50px 0;
+}
+
+/* ===================== INFO SECTION ===================== */
+/* Jarak antar blok informasi */
+.info-section{
+    margin-bottom:40px;
+}
+
+/* Gaya judul section info yang menggunakan susunan flex (ikon + teks) */
+.section-heading{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    color:#1e3a5f;
+    font-size:38px;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+/* Warna dan ukuran ikon di samping judul info */
+.section-heading i{
+    color:#1e3a5f;
+    font-size:34px;
+}
+
+/* Mengatur teks paragraf info agar rapi rata kanan-kiri (justify) */
+.info-section p{
+    font-size:17px;
+    line-height:1.9; /* Jarak antar baris teks */
+    color:#4a5568;
+    text-align:justify;
+    margin-top:15px;
+}
+
+/* Gaya sub-judul di dalam info section */
+.info-section h3{
+    margin-top:21px;
+    margin-bottom:15px;
+    color:#1e3a5f;
+    font-size:28px;
+}
+
+/* VISI MISI */
+/* Jarak kiri untuk teks visi */
+.visi{
+    margin-left:25px;
+}
+
+/* Jarak kiri untuk daftar list misi */
+.misi-list{
+    margin-left:50px;
+    margin-top:15px;
+}
+
+/* Gaya teks tiap poin di dalam daftar misi */
+.misi-list li{
+    font-size:16px;
+    line-height:1.9;
+    color:#4a5568;
+    margin-bottom:10px;
+}
+
+/* ===================== MAP ===================== */
+/* Kotak pembungkus peta digital (Google Maps) */
+.map-box{
+    width:100%;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.18);
+    margin-top:20px;
+}
+
+/* Mengatur iframe peta agar memenuhi area kotak */
+.map-box iframe{
+    width:100%;
+    height:500px;
+    border:0;
+    display:block;
+}
+
+/* ===================== GALLERY ===================== */
+/* Grid layout dasar untuk galeri foto */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+/* Mengatur gambar di dalam galeri agar seragam dimensinya */
+.gallery img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+/* ===================== PRODUCT ===================== */
+/* Gaya kartu produk individual dengan border khusus */
+.product-card{
+    width:300px;
+    margin:20px auto;
+    padding:15px;
+    border:1px solid #1e3a5f;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.12);
+    background:#ffffff;
+}
+
+/* Wadah pembungkus banyak produk dengan flexbox agar fleksibel ke bawah */
+.content4{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+/* Mengatur visual gambar produk */
+.product-img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+/* Gaya tombol pemesanan produk */
+.btn-pesan{
+    display:inline-block;
+    margin-top:10px;
+    padding:10px 15px;
+    background:#1e3a5f;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-size:14px;
+    transition:0.3s;
+}
+
+/* Efek hover tombol pemesanan */
+.btn-pesan:hover{
+    background:#4da3ff;
+}
+
+/* ===================== SERVICE ===================== */
+/* Gaya kartu layanan masyarakat berupa link utuh */
+.service-card{
+    display:block;
+    text-decoration:none;
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    color:#333;
+    box-shadow:0 2px 10px rgba(0,0,0,0.10);
+    transition:0.3s;
+}
+
+/* Ukuran dan warna ikon layanan */
+.service-card i{
+    font-size:35px;
+    color:#1e3a5f;
+    margin-bottom:10px;
+}
+
+/* Efek hover kartu layanan (berubah warna latar & terangkat sedikit) */
+.service-card:hover{
+    transform:translateY(-5px);
+    background:#f2f6ff;
+}
+
+/* ===================== FOOTER ===================== */
+/* Pengaturan standar area kaki halaman (footer) */
+footer{
+    background:#0b1f3a;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:50px;
+}
+
+/* ===================== BACK TO TOP ===================== */
+/* Tombol melayang untuk kembali ke atas halaman */
+#topBtn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    padding:15px;
+    border:none;
+    border-radius:50%;
+    background:#1e3a5f;
+    color:white;
+    cursor:pointer;
+    display:none; /* Sembunyikan default (diatur lewat JavaScript nanti) */
+}
+
+/* Efek hover tombol kembali ke atas */
+#topBtn:hover{
+    background:#4da3ff;
+}
+
+/* ================= DOWNLOAD ================= */
+/* Grid layout untuk area unduhan dokumen */
+.download-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+/* Kotak informasi file unduhan */
+.download-card{
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:0.3s;
+}
+
+/* Efek hover kotak unduhan */
+.download-card:hover{
+    transform:translateY(-5px);
+}
+
+/* Ukuran ikon jenis file pada area download */
+.download-card i{
+    font-size:60px;
+    color:#1e3a5f;
+    margin-bottom:15px;
+}
+
+/* Gambar/Thumbnail dokumen unduhan */
+.download-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+/* Judul file unduhan */
+.download-card h3{
+    margin-bottom:15px;
+    color:#1e3a5f;
+}
+
+/* Desain tombol download */
+.download-btn{
+    display:inline-block;
+    padding:10px 20px;
+    background:#1e3a5f;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+/* Efek hover tombol download */
+.download-btn:hover{
+    background:#2f5a8f;
+}
+
+/* ===== POTENSI UNGGULAN DESA ===== */
+/* Penyelarasan letak komponen potensi desa */
+.potensi-desa{
+    text-align:center;
+    margin-top:5px;
+    margin-left:50px;
+}
+
+/* Pengaturan visual gambar potensi unggulan desa */
+.potensi-desa img{
+    width:70%;
+    max-width:650px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.15);
+}
+
+/*========= Footer ===========*/
+/* Layout grid untuk membagi isi footer menjadi bagian kiri dan kanan */
+.footer-container{
+    max-width:1100px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns: 2fr 1fr; /* Bagian kiri lebih lebar dibanding kanan */
+
+    gap:80px;
+    padding:60px 20px;
+
+    background: #0b1f3a;
+    color: #ffffff;
+
+    /* FULL BACKGROUND FOOTER */
+    /* Catatan: Selektor di bawah bersarang (nested) di dalam .footer-container asli Anda */
+.footer{
+    width:100%;
+    background:#0b1f3a;
+    color:#fff;
+    margin:0;
+    padding:0;
+}
+
+/* CONTAINER HANYA MENGATUR LEBAR KONTEN */
+.footer-container{
+    max-width:1100px;
+    margin:0 auto;
+    padding:50px 20px;
+    
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:80px;
+}
+
+/* COPYRIGHT */
+/* Desain area copyright di baris paling bawah footer */
+.footer-bottom{
+    width:100%;
+    text-align:center;
+    padding:12px 0;
+    border-top:1px solid rgba(255,255,255,.15);
+    background:#0b1f3a;
+}
+}
+
+/* Gaya teks judul di dalam area footer */
+.footer-left h3,
+.footer-right h3{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+/* Mengatur jarak antarbaris teks deskripsi di footer kiri */
+.footer-left p{
+    margin:0 0 6px;
+    line-height:1.5;
+}
+
+/* Bagian Hubungi Kami */
+/* Menggunakan susunan flex arah vertikal untuk info kontak */
+.footer-right{
+    display:flex;
+    flex-direction:column;
+}
+
+/* Baris item kontak (ikon + teks detail kontak) */
+.contact-item{
+    display:flex;
+    align-items:flex-start;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+/* Menyamakan lebar ikon agar teks di sebelahnya lurus sejajar secara vertikal */
+.contact-item i{
+    width:24px;          /* supaya ikon sejajar */
+    font-size:18px;
+    text-align:center;
+    margin-top:3px;
+}
+
+/* Mengatur pemotongan kata otomatis jika teks kontak terlalu panjang */
+.contact-item span{
+    line-height:1.5;
+    word-break:break-word;
+}
+
+/* Wadah kumpulan ikon media sosial */
+.social-icons{
+    display:flex;
+    gap:18px;
+    margin-top:10px;
+}
+
+/* Ukuran ikon media sosial */
+.social-icons a{
+    color:#fff;
+    font-size:22px;
+}
+
+/* Lebar statis untuk kolom footer kanan */
+.footer-right{
+    width:320px;
+}
+
+/* Batas lebar maksimal kolom footer kiri */
+.footer-left{
+    max-width:550px;
+}
+
+/*========== Responsive Mobile ==========*/
+/* Media query untuk layar smartphone / tablet potret (maksimal lebar 768px) */
+@media (max-width: 768px) {
+    /* Mengubah susunan grid footer menjadi satu kolom vertikal */
+    .footer-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    /* Penyesuaian ukuran teks footer pada perangkat mobile */
+    .footer h3 {
+        font-size: 24px;
+    }
+
+    .footer p,
+    .contact-item {
+        font-size: 16px;
+    }
+}
+
+/* ================= MOBILE ================= */
+/* Media query tambahan untuk penataan komponen halaman versi mobile */
+@media screen and (max-width:768px){
+
+    /* Navbar berubah susunan menjadi menumpuk ke bawah */
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    /* Menu ul membungkus item ke baris baru jika space tidak cukup dan rata tengah */
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:10px;
+    }
+
+    nav ul li{
+        margin-left:0;
+    }
+
+    /* Penyesuaian tinggi area hero di layar kecil */
+    .hero{
+        height:70vh;
+        padding:20px;
+    }
+
+    /* Ukuran teks hero yang lebih kecil agar tidak terpotong */
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    /* Penyesuaian judul info section di mobile */
+    .section-heading{
+        font-size:28px;
+    }
+
+    .section-heading i{
+        font-size:26px;
+    }
+
+    /* Mengurangi tinggi iframe Google Maps di layar hp */
+    .map-box iframe{
+        height:300px;
+    }
+
+    /* Mengembalikan margin potensi desa ke nol agar pas di layar */
+    .potensi-desa{
+        margin-left:0;
+    }
+
+    /* Gambar potensi desa otomatis melebar penuh mengikuti device */
+    .potensi-desa img{
+        width:100%;
+    }
+
+    /* Memastikan kartu produk proporsional di layar hp */
+    .product-card{
+        width:100%;
+        max-width:350px;
+    }
+
+    /* Mengubah grid footer menjadi 1 kolom vertikal dan teks rata tengah */
+    .footer-container{
+        grid-template-columns:1fr;
+        gap:30px;
+        text-align:center;
+    }
+
+    .footer-right{
+        width:100%;
+    }
+
+    /* Memastikan detail item kontak berada di tengah (center) */
+    .contact-item{
+        justify-content:center;
+    }
+}
+
+/* Aturan global agar semua gambar bersifat responsif */
+img{
+    max-width:100%;
+    height:auto;
+}
+
+/* ================= RUNNING TEXT ================= */
+/* Desain area teks berjalan (running text banner) */
+.running-text{
+    background:#1d528a;
+    color:#fff;
+    overflow:hidden; /* Menyembunyikan teks yang meluap keluar batas kotak */
+    white-space:nowrap; /* Mencegah teks turun ke baris baru */
+    padding:10px 0;
+}
+
+/* Mengatur wadah teks berjalan agar memulai animasi dari ujung kanan luar */
+.running-content{
+    display:inline-flex;
+    align-items:center;
+    padding-left:100%;
+    animation:jalan 25s linear infinite; /* Menjalankan animasi 'jalan' terus-menerus */
+}
+
+/* Memberi jarak/jeda buatan di akhir urutan teks berjalan */
+.gap{
+    width:300px; /* semakin besar, semakin lama jedanya */
+    display:inline-block;
+}
+
+/* Keyframes untuk mendefinisikan pergerakan animasi teks berjalan */
+@keyframes jalan{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-100%); /* Geser penuh ke kiri sampai teks hilang */
+    }
+}
+
+/* ================= GALERI ================= */
+/* Grid layout lanjutan untuk halaman Galeri Foto khusus */
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+/* Kotak pembungkus tiap item foto di galeri */
+.gallery-item{
+    position:relative;
+    overflow:hidden; /* Penting untuk efek zoom gambar agar tidak keluar box */
+    border-radius:15px;
+    background:#fff;
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+    transition:.3s;
+}
+
+/* Efek kotak galeri sedikit terangkat saat di-hover */
+.gallery-item:hover{
+    transform:translateY(-5px);
+}
+
+/* Mengatur dimensi gambar di dalam galeri grid */
+.gallery-item img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    display:block;
+}
+
+/* Desain teks caption di bawah gambar galeri */
+.gallery-caption{
+    padding:15px;
+    text-align:center;
+    font-weight:600;
+    color:#1e3a5f;
+}
+
+/* Memberi durasi transisi pada gambar agar efek perbesaran (zoom) berjalan mulus */
+.gallery-item img{
+    transition:.4s;
+}
+
+/* Hover Zoom: Efek gambar membesar (skala 1.08) saat kotaknya disorot kursor */
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
