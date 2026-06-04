@@ -850,3 +850,11 @@ body {
 body.fade-out {
     opacity: 0;
 }
+
+.qr-code img{
+    width:60px;
+    height:60px;
+    background:white;
+    padding:3px;
+    border-radius:5px;
+}
